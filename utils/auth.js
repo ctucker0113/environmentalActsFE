@@ -49,5 +49,5 @@ export {
   signOut,
   checkUser,
   registerUser,
-  dbURL
+  dbURL,
 };
