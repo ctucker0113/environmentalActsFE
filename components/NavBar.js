@@ -20,11 +20,14 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href="/delete-me">
+            <Link passHref href="/">
               <Nav.Link>My Events</Nav.Link>
             </Link>
-            <Link passHref href="/delete-me">
+            <Link passHref href="/">
               <Nav.Link>All Events</Nav.Link>
+            </Link>
+            <Link passHref href="/">
+              <Nav.Link>Create Event</Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>
               Sign Out
