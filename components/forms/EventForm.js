@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { updateEvent, createEvent } from '../../api/eventData';
+import { getCategories } from '../../api/categoryData';
 
 const initialState = {
   title: '',
@@ -24,6 +25,7 @@ export default function EventForm({ eventObj }) {
   useEffect(() => {
     // If the object already exists (i.e. - has an ID), then fill the form with the values from the object.
     // Else, leave the values in the form blank.
+    getCategories().then(setCategories);
     if (eventObj.id) setFormInput(eventObj);
   }, [eventObj, user]);
 
