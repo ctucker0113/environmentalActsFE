@@ -120,7 +120,7 @@ const deleteEventFromUser = (eventId, userId) => new Promise((resolve, reject) =
       }
     })
     .catch(reject);
-}); 
+});
 
 export {
   getEvents,
