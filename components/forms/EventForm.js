@@ -1,12 +1,13 @@
+/* eslint-disable import/named */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import { getCategories } from '../../api/categoryData';
 import { useAuth } from '../../utils/context/authContext';
 import { updateEvent, createEvent } from '../../api/eventData';
-import { getCategories } from '../../api/categoryData';
 
 const initialState = {
   title: '',
@@ -30,6 +31,7 @@ export default function EventForm({ eventObj }) {
   }, [eventObj, user]);
 
   const handleChange = (e) => {
+    e.preventDefault();
     // Declares 2 variables, 'name,' and 'value' to organize what a user has entered in order to place it in an object.
     const { name, value } = e.target;
     // "Refreshes" the page with an ampty variable called prevState
@@ -41,23 +43,44 @@ export default function EventForm({ eventObj }) {
     }));
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // If the item already exists in the database...
+  //   if (eventObj.id) {
+  //     // Make the Update API call and then route the user to the Heroes page.
+  //     // TO-DO: Create the route for the router.push below and add it into the parentheses.
+  //     updateEvent(formInput).then(() => router.push('/'));
+  //     // Else start running the Add Author function
+  //   } else {
+  //     const payload = { ...formInput, createdBy: user.uid };
+  //     createEvent(payload).then(({ name }) => {
+  //       const patchPayload = { id: name };
+  //       updateEvent(patchPayload).then(() => {
+  //       // TO-DO: Create the route for the router.push below and add it into the parentheses.
+  //         router.push('/');
+  //       });
+  //     });
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // If the item already exists in the database...
+
     if (eventObj.id) {
-      // Make the Update API call and then route the user to the Heroes page.
-      // TO-DO: Create the route for the router.push below and add it into the parentheses.
-      updateEvent(formInput).then(() => router.push('/'));
-      // Else start running the Add Author function
+      updateEvent(formInput).then(() => {
+        console.warn('Event Updated'); // To check if the event update is successful
+        router.push('/');
+      }).catch((error) => console.error('Update Event Error:', error));
     } else {
+      console.log('New event detected!');
       const payload = { ...formInput, createdBy: user.uid };
+      console.log(`The payload contains: ${payload}`);
       createEvent(payload).then(({ name }) => {
+        console.warn('Event Created'); // To check if the event creation is successful
         const patchPayload = { id: name };
         updateEvent(patchPayload).then(() => {
-        // TO-DO: Create the route for the router.push below and add it into the parentheses.
           router.push('/');
-        });
-      });
+        }).catch((error) => console.error('Patch Event Error:', error));
+      }).catch((error) => console.error('Create Event Error:', error));
     }
   };
 
@@ -70,7 +93,7 @@ export default function EventForm({ eventObj }) {
         <Form.Control
           type="text"
           placeholder="Event Title"
-          name="event_title"
+          name="title"
           value={formInput.title}
           onChange={handleChange}
           required
@@ -82,8 +105,8 @@ export default function EventForm({ eventObj }) {
         <Form.Control
           type="text"
           placeholder="event Description"
-          name="event_description"
-          value={formInput.event_description}
+          name="description"
+          value={formInput.description}
           onChange={handleChange}
           required
         />
@@ -94,8 +117,8 @@ export default function EventForm({ eventObj }) {
         <Form.Control
           type="text"
           placeholder="Date of Event"
-          name="event_date"
-          value={formInput.event_date}
+          name="eventDate"
+          value={formInput.eventDate}
           onChange={handleChange}
           required
         />
