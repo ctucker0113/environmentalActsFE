@@ -34,7 +34,7 @@ const getSingleEvent = (id) => new Promise((resolve, reject) => {
 });
 
 // CREATE AN EVENT
-constcreateEvent = (payload) => new Promise((resolve, reject) => {
+const createEvent = (payload) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/events`, {
     method: 'POST',
     headers: {
