@@ -1,6 +1,4 @@
-import { clientCredentials } from '../utils/client';
-
-const dbUrl = clientCredentials.databaseURL;
+const dbUrl = 'https://localhost:7195';
 
 // GET ALL USERS
 const getUsers = () => new Promise((resolve, reject) => {
@@ -84,7 +82,7 @@ const deleteUser = (id) => new Promise((resolve, reject) => {
 
 // GET ALL EVENTS FOR AN USER
 const getAllSignedUpEventsOnUser = (uid) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/eventUser/${uid}`, {
+  fetch(`${dbUrl}/userEvents/${uid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -96,8 +94,8 @@ const getAllSignedUpEventsOnUser = (uid) => new Promise((resolve, reject) => {
 });
 
 // GET ALL CREATED EVENTS FOR AN USER
-const getAllCreatedEventsOnUser = (createdBy) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/eventUser/${createdBy}`, {
+const getAllCreatedEventsOnUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/createdEventUser/${uid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
