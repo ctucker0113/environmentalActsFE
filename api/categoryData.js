@@ -1,6 +1,4 @@
-import { clientCredentials } from '../utils/client';
-
-const dbUrl = clientCredentials.databaseURL;
+const dbUrl = 'https://localhost:7195';
 
 // GET ALL CATEGORIES
 const getCategories = () => new Promise((resolve, reject) => {
