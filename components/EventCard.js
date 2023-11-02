@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { Card, Button, } from 'react-bootstrap';
-import { deleteEvent } from '../api/eventData';
+import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
+import { deleteEvent } from '../api/eventData';
 
 export default function EventCards({ eventObj, onUpdate }) {
   const deleteThisEvent = () => {
@@ -18,7 +18,7 @@ export default function EventCards({ eventObj, onUpdate }) {
         <p className="card-text bold">{eventObj.description}</p>
         <p>{eventObj.category.name}</p>
         <Link href={`/EventDetails/${eventObj.id}`} passHref>
-        <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisEvent} className="m-2">
           DELETE
