@@ -4,7 +4,7 @@ const dbUrl = clientCredentials.databaseURL;
 
 // GET ALL CATEGORIES
 const getCategories = () => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/categories`, {
+  fetch(`${dbUrl}/category`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
