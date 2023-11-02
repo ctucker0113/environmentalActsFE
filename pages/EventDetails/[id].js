@@ -26,7 +26,7 @@ export default function ViewEventDetails() {
           Event name: {eventDetails.title}
           <br /> description: {eventDetails.description}
         </h5>
-        <h5>category: {eventDetails.categoryId}</h5>
+        <h5>category: {eventDetails.category}</h5>
         <h5>Date: {eventDetails.scheduledDate}</h5>
       </div>
     </>
