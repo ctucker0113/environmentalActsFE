@@ -24,6 +24,9 @@ export default function NavBar() {
               <Nav.Link>My Events</Nav.Link>
             </Link>
             <Link passHref href="/">
+              <Nav.Link>All Events</Nav.Link>
+            </Link>
+            <Link passHref href="/event/newEvent">
               <Nav.Link>Create Event</Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>

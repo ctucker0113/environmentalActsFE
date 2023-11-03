@@ -1,4 +1,4 @@
-const dbUrl = 'https://localhost:7195';
+import { dbUrl } from './eventData';
 
 // GET ALL CATEGORIES
 const getCategories = () => new Promise((resolve, reject) => {
@@ -13,4 +13,4 @@ const getCategories = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getCategories };
+export default getCategories;
