@@ -37,6 +37,7 @@ const createEvent = (payload) => new Promise((resolve, reject) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(payload),
   })
@@ -128,6 +129,7 @@ export {
   createEvent,
   updateEvent,
   deleteEvent,
+  dbUrl,
   getAllUsersOnEvent,
   addUsersToEvent,
   deleteEventFromUser,

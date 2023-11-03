@@ -1,6 +1,4 @@
-import { clientCredentials } from '../utils/client';
-
-const dbUrl = clientCredentials.databaseURL;
+import { dbUrl } from './eventData';
 
 // GET ALL CATEGORIES
 const getCategories = () => new Promise((resolve, reject) => {
@@ -15,4 +13,4 @@ const getCategories = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getCategories };
+export default getCategories;
