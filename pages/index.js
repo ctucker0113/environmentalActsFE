@@ -15,6 +15,8 @@ export default function AllEvents() {
   useEffect(() => {
     getAllTheEvents();
   }, []);
+
+  console.warn(Event);
   return (
     <>
       <div
