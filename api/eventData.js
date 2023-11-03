@@ -1,6 +1,4 @@
-import { clientCredentials } from '../utils/client';
-
-const dbUrl = clientCredentials.databaseURL;
+const dbUrl = 'https://localhost:7195';
 
 // GET ALL EVENTS
 const getEvents = () => new Promise((resolve, reject) => {
@@ -39,6 +37,7 @@ const createEvent = (payload) => new Promise((resolve, reject) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(payload),
   })
@@ -130,6 +129,7 @@ export {
   createEvent,
   updateEvent,
   deleteEvent,
+  dbUrl,
   getAllUsersOnEvent,
   addUsersToEvent,
   deleteEventFromUser,
