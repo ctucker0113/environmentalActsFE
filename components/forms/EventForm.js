@@ -115,8 +115,8 @@ export default function EventForm({ eventObj }) {
         <Form.Control
           type="text"
           placeholder="Date of Event"
-          name="eventDate"
-          value={formInput.eventDate}
+          name="scheduledDate"
+          value={formInput.scheduledDate}
           onChange={handleChange}
           required
         />

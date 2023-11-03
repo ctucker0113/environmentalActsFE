@@ -23,9 +23,6 @@ export default function NavBar() {
             <Link passHref href="/MyEvents">
               <Nav.Link>My Events</Nav.Link>
             </Link>
-            <Link passHref href="/">
-              <Nav.Link>All Events</Nav.Link>
-            </Link>
             <Link passHref href="/event/newEvent">
               <Nav.Link>Create Event</Nav.Link>
             </Link>

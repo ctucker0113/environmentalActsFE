@@ -15,6 +15,7 @@ export default function EventCards({ eventObj, onUpdate }) {
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{eventObj.title}</Card.Title>
+        <p>Scheduled date: {eventObj.scheduledDate}</p>
         <p className="card-text bold">{eventObj.description}</p>
         <p>{eventObj.category.name}</p>
         <Link href={`/EventDetails/${eventObj.id}`} passHref>
