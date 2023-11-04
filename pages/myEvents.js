@@ -8,9 +8,9 @@ export default function MyEvents() {
   const { user } = useAuth();
   const [signedEvents, setSignedEvents] = useState([]);
   const [createdEvents, setCreatedEvents] = useState([]);
-  console.warn(user);
-  console.warn(signedEvents, 'sign');
-  console.warn(createdEvents, 'create');
+  // console.warn(user);
+  // console.warn(signedEvents, 'sign');
+  // console.warn(createdEvents, 'create');
 
   const update = () => {
     getAllCreatedEventsOnUser(user.uid).then(setCreatedEvents);
