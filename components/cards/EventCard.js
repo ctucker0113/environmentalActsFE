@@ -31,7 +31,7 @@ export default function EventCard({ eventObj, onUpdate }) {
             <p>Description: {eventObj.description}</p>
             <p>Date: {eventObj.scheduledDate}</p>
             <p>Type of Event: {eventObj.category.name}</p>
-            <Link href={`/event/${eventObj.id}`} passHref>
+            <Link href={`/EventDetails/${eventObj.id}`} passHref>
               <Button variant="primary" className="m-2">VIEW</Button>
             </Link>
           </div>
