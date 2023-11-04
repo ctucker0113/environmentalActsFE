@@ -16,7 +16,6 @@ export default function AllEvents() {
     getAllTheEvents();
   }, []);
 
-  console.warn(Event);
   return (
     <>
       <div
