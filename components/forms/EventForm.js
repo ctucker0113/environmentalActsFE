@@ -12,7 +12,7 @@ import { updateEvent, createEvent } from '../../api/eventData';
 const initialState = {
   title: '',
   description: '',
-  eventDate: '',
+  scheduledDate: '',
 };
 
 export default function EventForm({ eventObj }) {
@@ -30,12 +30,10 @@ export default function EventForm({ eventObj }) {
     if (eventObj.id) setFormInput(eventObj);
   }, [eventObj]);
 
-  console.warn(categories);
   const handleChange = (e) => {
-    e.preventDefault();
     // Declares 2 variables, 'name,' and 'value' to organize what a user has entered in order to place it in an object.
     const { name, value } = e.target;
-    // "Refreshes" the page with an ampty variable called prevState
+    // "Refreshes" the page with an empty variable called prevState
     setFormInput((prevState) => ({
       // "Spreads" the prevState so that new values can be added to it.
       ...prevState,
@@ -54,37 +52,15 @@ export default function EventForm({ eventObj }) {
       // Else start running the Add Author function
     } else {
       const payload = { ...formInput, uid: user.uid };
-      console.warn(payload, 'this one');
       createEvent(payload).then(() => {
         router.push('/');
       });
     }
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (eventObj.id) {
-  //     updateEvent(formInput).then(() => {
-  //       console.warn('Event Updated'); // To check if the event update is successful
-  //       router.push('/');
-  //     }).catch((error) => console.error('Update Event Error:', error));
-  //   } else {
-  //     console.log('New event detected!');
-  //     const payload = { ...formInput, uid: user.uid };
-  //     console.log(`The payload contains: ${payload}`);
-  //     createEvent(payload).then(({ name }) => {
-  //       console.warn('Event Created'); // To check if the event creation is successful
-  //       const patchPayload = { id: name };
-  //       updateEvent(patchPayload).then(() => {
-  //         router.push('/');
-  //       }).catch((error) => console.error('Patch Event Error:', error));
-  //     }).catch((error) => console.error('Create Event Error:', error));
-  //   }
-  // };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">Create Event</h2>
+      <h2 className="text-white mt-5">{eventObj.id ? 'Update' : 'Create' } Event</h2>
 
       {/* TITLE OF EVENT INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Title" className="mb-3">
@@ -146,7 +122,7 @@ export default function EventForm({ eventObj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">Create Event </Button>
+      <Button type="submit">{eventObj.id ? 'Update' : 'Create' } Event </Button>
     </Form>
   );
 }
