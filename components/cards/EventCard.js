@@ -15,11 +15,12 @@ export default function EventCard({ eventObj, onUpdate }) {
 
   const { user } = useAuth();
 
-  // if (eventObj.uid) {
-  //   <Button variant="danger" onClick={deleteThisOrder} className="m-2">
-  //   DELETE
-  // </Button>
-  // }
+  const delUser = () => {
+    if (window.confirm(`Unsubscribe from ${eventObj.title}?`)) {
+      deleteEventFromUser(eventObj.id, user[0].id).then(() => onUpdate());
+    }
+  };
+
   console.warn(eventObj);
   return (
     <>
@@ -47,7 +48,7 @@ export default function EventCard({ eventObj, onUpdate }) {
           )}
           {eventObj.uid !== user.uid && (
             <>
-              <Button variant="info" onClick={deleteEventFromUser}>unsubscribe</Button>
+              <Button variant="info" onClick={delUser}>unsubscribe</Button>
             </>
           )}
         </Card.Body>

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
-import deleteEvent from '../api/eventData';
+import deleteEvent, { addUsersToEvent } from '../api/eventData';
 import { useAuth } from '../utils/context/authContext';
 // import { useEffect } from 'react';
 
@@ -11,14 +11,15 @@ export default function EventCards({ eventObj, onUpdate }) {
       deleteEvent(eventObj.id).then(() => onUpdate());
     }
   };
-
-  console.warn(onUpdate);
-
   const { user } = useAuth();
 
-  // useEffect(() => {
-  //   ();
-  // }, []);
+  const addUser = () => {
+    if (window.confirm(`Sign up for ${eventObj.title}?`)) {
+      addUsersToEvent(user[0].id, eventObj.id).then(() => onUpdate());
+    }
+  };
+
+  console.warn(user);
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
@@ -41,7 +42,7 @@ export default function EventCards({ eventObj, onUpdate }) {
           </>
         )}
         {eventObj.uid !== user.uid && (
-          <Button variant="info" onClick={deleteThisEvent} className="m-2">
+          <Button variant="info" onClick={addUser} className="m-2">
             Sign Up
           </Button>
         )}
