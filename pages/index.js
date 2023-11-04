@@ -31,8 +31,8 @@ export default function AllEvents() {
       >
 
         <h1>Hello {user.fbUser.displayName}! </h1>
-        <h2>Welcome to *website name*!</h2>
-        <p>This website is for scheduleing and applying for events online</p>
+        <h2>Welcome to Planet Party Planner! (PPP)</h2>
+        <p>This website is for creating and signing up for events online</p>
       </div>
       <div className="text-center my-4">
         <h1>All Events</h1>
